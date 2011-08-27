@@ -84,24 +84,21 @@ def main():
                                        help='additional help')
     
     # create the parser for the "a" command
-    parser_init = subparsers.add_parser('init', help='init help')
+    parser_init = subparsers.add_parser('init', help='Initialize database with migration tracking.')
     parser_init.add_argument('URL', type=str, help='bar help')
     parser_init.set_defaults(func=init)
 
-    parser_test = subparsers.add_parser('test', help='init help')
-    parser_test.add_argument('URL', type=str, help='bar help')
-
-    parser_patch = subparsers.add_parser('patch', help='patch help')
+    parser_patch = subparsers.add_parser('patch', help='Create a new patch')
     parser_patch.add_argument('REPO', type=str, help='path to patch repo')
     parser_patch.set_defaults(func=patch)
     #parser_test.add_argument('URL', type=str, help='bar help')
 
-    parser_test = subparsers.add_parser('test', help='test help')
+    parser_test = subparsers.add_parser('test', help='Test migration status')
     parser_test.add_argument('REPO', type=str, help='path to patch repo')
     parser_test.add_argument('URL', type=str, help='DB url')
     parser_test.set_defaults(func=test)
 
-    parser_migrate = subparsers.add_parser('migrate', help='migrate help')
+    parser_migrate = subparsers.add_parser('migrate', help='Apply outstanding migrations')
     parser_migrate.add_argument('REPO', type=str, help='path to patch repo')
     parser_migrate.add_argument('URL', type=str, help='DB url')
     parser_migrate.set_defaults(func=migrate)

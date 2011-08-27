@@ -9,9 +9,9 @@ setup(name='pgmigrate2',
     author='Sergey Kirillov',
     author_email='sergey.kirillov@gmail.com',
     url='http://code.google.com/p/pgmigrate/',
-    install_requires=['lxml', 'psycopg2'],
+    install_requires=['sqlalchemy'],
     license="Apache License 2.0",
-    keywords="database migration tool postgres mysql aqlite",
+    keywords="database migration tool postgres mysql sqlite",
     platforms = ["any"],
     classifiers = ["Programming Language :: Python",
 #                       "License :: OSI Approved :: BSD License",
@@ -25,7 +25,7 @@ setup(name='pgmigrate2',
       
     entry_points = {
         'console_scripts': [
-            'pgmigrate2 = pgmigrate2:main',
+            'pgmigrate2 = pgmigrate2.main:main',
         ],
     }    
 )

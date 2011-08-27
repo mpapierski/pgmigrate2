@@ -1,0 +1,4 @@
+syntax: glob
+pgmigrate2.egg-info
+*.pyc
+p/
