@@ -1,4 +1,6 @@
 syntax: glob
+.pydevproject
+.project
 pgmigrate2.egg-info
 *.pyc
 p/
