@@ -11,6 +11,7 @@ class Db(object):
     def __init__(self, url):
         self.url = url
         self.engine = create_engine(self.url)
+        self.connection = self.engine.connect()
         
     def init(self):
         metadata.create_all(self.engine) 
