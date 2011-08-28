@@ -36,7 +36,8 @@ def newpatch(repo_path):
     if not patch:
         return
     path = pr.add_patch(patch)
-    print "Wrote '%s'" % path    
+    print "Wrote '%s'" % path
+    return path    
 
 
 def get_blank_slate(change_id):    
