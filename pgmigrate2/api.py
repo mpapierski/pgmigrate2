@@ -35,8 +35,8 @@ def newpatch(repo_path):
     patch = read_patch()
     if not patch:
         return
-    pr.add_patch(patch)
-    print "Done"    
+    path = pr.add_patch(patch)
+    print "Wrote '%s'" % path    
 
 
 def get_blank_slate(change_id):    
@@ -59,6 +59,7 @@ def read_patch():
     change_id = str(uuid.uuid1())
     slate = get_blank_slate(change_id)
     _, fpath = tempfile.mkstemp('.sql', 'pgmigrate2', text=True)
+    
     try:    
         with codecs.open(fpath, 'wt', encoding='utf-8') as f:
             f.write(slate)

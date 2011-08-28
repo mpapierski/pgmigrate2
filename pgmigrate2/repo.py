@@ -63,8 +63,8 @@ class PatchRepo(object):
     def add_patch(self, patch):
         self.seq += 1
         fn = '%06d_%s.sql' % (self.seq, memo_to_fn(patch.memo))
-        
-        with codecs.open(os.path.join(self.path, fn), 'wt', encoding='utf-8') as f:
+        fpath = os.path.join(self.path, fn)
+        with codecs.open(fpath, 'wt', encoding='utf-8') as f:
             f.write('--- id:      %s\n'
                     '--- author:  %s\n'
                     '--- memo:    %s\n'
@@ -75,7 +75,8 @@ class PatchRepo(object):
                                  patch.memo,
                                  patch.date.strftime("%Y-%m-%d %H:%M"),
                                  patch.sql))
-
+            
+        return fpath
 
 
 def memo_to_fn(x):
