@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(name='pgmigrate2',
       
     packages=find_packages(),
-    version='0.9.2',
+    version='1.0.0',
     description='Database schema migration tool for people who do not afraid SQL',
     author='Sergey Kirillov',
     author_email='sergey.kirillov@gmail.com',
