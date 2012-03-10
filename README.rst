@@ -5,12 +5,16 @@ Painless DVCS-aware database migrations for PostgreSQL
 Theory
 ------
 
-PGmigrate helps you to evolve your database together with your application. 
-The core fundamental unit of PGmigrate is a single SQL snippet called 'patch'.
+PGmigrate helps you to evolve your database together with your application.
+ 
+The core fundamental unit of PGmigrate is a single SQL snippet called `patch`.
 
-Sample db patch::
+Sample db patch
+^^^^^^^^^^^^^^^
 
-   serg@t420s:~/projects/shopium/migrations[hg:default] $ cat 000049_Added_index_on_CategorySlug.sql 
+::
+
+   $ cat 000049_Added_index_on_CategorySlug.sql 
    --- id:      89ccfca6-6851-11e1-99d8-a088b4e3b168
    --- author:  serg
    --- memo:    Added index on CategorySlug
@@ -21,7 +25,7 @@ Sample db patch::
      USING btree
      (shop_id, slug);
    
-As you can see patch is a valid SQL file, which can be executed directly. 
+As you can see patch is a valid SQL file, which even can be executed directly. It also has nice, human readable file name, and some metadata.
 
 
 Quickstart
@@ -52,7 +56,7 @@ Create a patch repo, and a first patch
 This will create empty patch and open it in your text editor. Enter patch SQL, and optional memo, describing what is the function of this patch.
 
 PGmigrate will create a file like `patchrepo/000001_creating_table_x.sql` where `000001` is a patch serial number, and `creating_table_x` is a 
-slugified patch memo.
+slugified patch memo. PGmigrate will fill rest of patch metadata by itself.
 
    
 Check what needs to be applied to
@@ -118,10 +122,45 @@ Here is example how we use PGmigrate in our project::
        api.check_status('migrations', config.db_uri)
 
 
+
 Q&A
 ---
 
 Why snippets contain SQL instead of programs in some DSL?
-   We belive that it if you have a good developers — it makes no sense to hide 
-   power to SQL from them. So, with PGmigrate you have a full control on what would be executed.
-   Also since we do not have any fancy stuff, PGmigrate is quite simple, and can be used in almost any development model.  
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We belive that it if you have a good developers — it makes no sense to hide 
+power to SQL from them. So, with PGmigrate you have a full control on what would be executed.
+Also since we do not have any fancy stuff, PGmigrate is quite simple, and can be used in almost any development model.  
+
+   
+Is it really PostgreSQL only?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Actually no. Internally we use SQLAlchemy, which is database agnostic, so theoretically it should work with any database.
+But since it is raw-SQL based, you need to use same DBMS everywhere.
+
+
+What was PGmigrate design goals?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Provide simple framework agnostic way for managing database changes in our projects
+* Use raw SQL. We love raw SQL.
+* Do not have tons of metadata everywhere.
+* No support for downgrades.
+* Support for DVCS-based flows, where you have many branches and frequently do merges between branches.
+* Be simple and powerful
+
+Why PGmigrate does not support downgrades (down database migrations)?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+In normal circumstances downgrades are rarely used. And since they are rarely used nobody tests them, and/or sometimes do not write them at all.
+We belive that having unreliable downgrades are worse than not having them at all.
+
+
+So, if something goes wrong, just roll forwards instead of rolling back. Or, if you really need to roll back, you can craft downgrade SQL manually. 
+
+
+I want my migrations to be written in Python/Ruby/Shell/whatever?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+You can check https://github.com/piranha/nomad/ which has similar design goals, has support for executable patches, but slightly cluttered patches repo structure. 
+
+   
+ 
