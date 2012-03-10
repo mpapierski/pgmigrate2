@@ -110,7 +110,7 @@ Here is example how we use PGmigrate in our project::
        
        path = api.newpatch('migrations')
        if path:
-           subprocess.check_call('hg add %s' % path, shell=True) # add just created patch to Mercurial
+           subprocess.check_call('hg add %s' % path, shell=True) # add created patch to Mercurial repo
 
 
    @finaloption.command(config_opts)
