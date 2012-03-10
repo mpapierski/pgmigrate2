@@ -7,7 +7,7 @@ Theory
 
 PGmigrate helps you to evolve your database together with your application.
  
-The core fundamental unit of PGmigrate is a single SQL snippet called `patch`.
+The fundamental unit of PGmigrate is a single SQL snippet called `patch`.
 
 Sample database patch
 ^^^^^^^^^^^^^^^^^^^^^
