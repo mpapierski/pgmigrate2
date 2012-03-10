@@ -163,9 +163,14 @@ We belive that having unreliable downgrades are worse than not having them at al
 So, if something goes wrong, just roll forwards instead of rolling back. Or, if you really need to roll back, you can craft downgrade SQL manually. 
 
 
+
 I want my migrations to be written in Python/Ruby/Shell/whatever?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 You can check https://github.com/piranha/nomad/ which has similar design goals, has support for executable patches, but slightly cluttered patches repo structure. 
 
+Can I use it in Django?
+^^^^^^^^^^^^^^^^^^^^^^^
+Sure. But we do not have a `management commands <https://docs.djangoproject.com/en/1.3/howto/custom-management-commands/>`_ so far, so, you will
+need to write them by youself (you can contribute them back to PGmigrate afterwards). 
    
  
