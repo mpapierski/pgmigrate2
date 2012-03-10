@@ -1,6 +1,6 @@
-======================================================
-Painless DVCS-aware database migrations for PostgreSQL
-======================================================
+=======================================
+Painless DVCS-aware database migrations
+=======================================
 
 Theory
 ------
@@ -9,8 +9,8 @@ PGmigrate helps you to evolve your database together with your application.
  
 The core fundamental unit of PGmigrate is a single SQL snippet called `patch`.
 
-Sample db patch
-^^^^^^^^^^^^^^^
+Sample database patch
+^^^^^^^^^^^^^^^^^^^^^
 
 ::
 
@@ -126,12 +126,10 @@ Here is example how we use PGmigrate in our project::
 Q&A
 ---
 
-Why snippets contain SQL instead of programs in some DSL?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-We belive that it if you have a good developers — it makes no sense to hide 
-power to SQL from them. So, with PGmigrate you have a full control on what would be executed.
-Also since we do not have any fancy stuff, PGmigrate is quite simple, and can be used in almost any development model.  
+Why it is called PGmigrate?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+That's abbreviation for PostgreSQL Migrate.
    
 Is it really PostgreSQL only?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,6 +146,13 @@ What was PGmigrate design goals?
 * No support for downgrades.
 * Support for DVCS-based flows, where you have many branches and frequently do merges between branches.
 * Be simple and powerful
+
+Why snippets contain SQL instead of programs in some DSL?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+We belive that it if you have a good developers — it makes no sense to hide 
+power to SQL from them. So, with PGmigrate you have a full control on what would be executed.
+Also since we do not have any fancy stuff, PGmigrate is quite simple, and can be used in almost any development model.  
+
 
 Why PGmigrate does not support downgrades (down database migrations)?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
