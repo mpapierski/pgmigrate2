@@ -32,7 +32,7 @@ class Db(object):
             print "Need to apply %d patches:" % len(unapplied)
         else:
             print "All patches are already applied."
-            return
+            return True
         
         for patch in unapplied:
             try:
