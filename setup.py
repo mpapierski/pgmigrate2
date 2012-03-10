@@ -27,5 +27,7 @@ setup(name='pgmigrate2',
         'console_scripts': [
             'pgmigrate2 = pgmigrate2.main:main',
         ],
-    }    
+    },
+      
+    long_description=open('README.rst').read().decode('utf-8')    
 )
