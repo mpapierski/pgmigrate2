@@ -1,4 +1,5 @@
 from sqlalchemy import create_engine, Table, MetaData, Column, String, sql
+from sqlalchemy.sql.expression import text
 import sqlalchemy.exc
 
 metadata = MetaData()
@@ -50,7 +51,7 @@ class Db(object):
                 
     def _patch(self, conn, patch):
         print "Applying '%s'" % patch.memo
-        conn.execute(patch.sql)
+        conn.execute(text(patch.sql))
         
         ins = applied_patches_table.insert().values(id=patch.id)
         conn.execute(ins)
