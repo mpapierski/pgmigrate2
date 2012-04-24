@@ -173,4 +173,9 @@ Can I use it in Django?
 Sure. But we do not have a `management commands <https://docs.djangoproject.com/en/1.3/howto/custom-management-commands/>`_ so far, so, you will
 need to write them by youself (you can contribute them back to PGmigrate afterwards). 
    
- 
+
+Contributors
+------------
+
+Sergey Kirillov
+Michał Papierski 
