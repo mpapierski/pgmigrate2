@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+import os.path
+here = os.path.dirname(os.path.abspath(__file__))
 
 from setuptools import setup, find_packages
 setup(name='pgmigrate2',
       
     packages=find_packages(),
-    version='1.2.0',
+    version='1.2.2',
     description='Database schema migration tool for people who do not afraid SQL',
     author='Sergey Kirillov',
     author_email='sergey.kirillov@gmail.com',
@@ -29,5 +31,5 @@ setup(name='pgmigrate2',
         ],
     },
       
-    long_description=open('README.rst').read().decode('utf-8')    
+    long_description=open(os.path.join(here, 'README.rst')).read().decode('utf-8')    
 )
